@@ -1,5 +1,6 @@
 import os
-def getlengt(file):
+def getlengt():
+    file = document
     file_path = file
 
     with open(file_path, "r") as f:
@@ -10,7 +11,8 @@ def getlengt(file):
 
     
     return num_lines
-def get(num, file):
+def get(num):
+    file = document
     openfile = open(file)
     loop = 1
     while loop != num:
@@ -20,8 +22,9 @@ def get(num, file):
     openfile.close()
     return re
 
-def write(file, regel, input, nieuwen_regel):
+def write(regel, input, nieuwen_regel):
     #krijg de lengte van het bestand
+    file = document
     file_lengt = getlengt(file)
     file_regel = regel - 1
     
@@ -64,8 +67,17 @@ def write(file, regel, input, nieuwen_regel):
     f.write(out)
     f.close()
     
-
+def set_doc(file):
+    global document
+    document = file
 
 
 def make(name):
     open(name, "x")
+    set_doc(name)
+    
+def delete():
+    if os.path.exists(document):
+      return os.remove(document)
+    else:
+     return 404
